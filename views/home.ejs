@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Guessing Game</title>
+</head>
+
+<body>
+    <h1>
+        <center>Guessing Game</center>
+    </h1>
+
+    <% if (stage == "home") { %>
+    <form action="/start" method="POST">
+        <center><button class="button" type="submit">Start Game</button></center>
+    </form>
+
+    <%} else if (stage == "game") {%>
+    <center>
+        Input 4 alphabet from button A,B,C,D and click Submit button
+    </center>
+    <center>
+        <div>
+            <h1><%= guessing %></h1>
+        </div>
+    </center>
+    <center>
+        <form action="/guess" method="POST">
+            <div>
+                <button name="alphabet" type="submit" value="A">A</button>
+                <button name="alphabet" type="submit" value="B">B</button>
+                <button name="alphabet" type="submit" value="C">C</button>
+                <button name="alphabet" type="submit" value="D">D</button>
+            </div>
+        </form>
+    </center>
+    <h1></h1>
+    <center>
+        <h1>Fail: <%= fail %></h1>
+        <br>
+        </div>
+    </center>
+    <center>
+        <form action="/finish" method="POST">
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </center>
+    <%} else if (stage == 'result') {%>
+    <center>
+        <h1>You Win!!!</h1>
+    </center>
+    <center>
+        <h1>Answer: <%= question%></h1>
+    </center>
+    <center>
+        <h1 style="float: rigth">Fail: <%= fail %></h1>
+    </center>
+    <form action="/home" method="POST">
+        <div>
+            <center><button type="submit">Restart</button></center>
+        </div>
+    </form>
+    <% } %>
+</body>
+
+</html>
